@@ -1,0 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --background: 150 20% 97%;
+    --foreground: 160 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 10%;
+
+    --primary: 160 84% 24%;
+    --primary-foreground: 150 40% 98%;
+
+    --secondary: 152 20% 92%;
+    --secondary-foreground: 160 30% 15%;
+
+    --muted: 150 15% 93%;
+    --muted-foreground: 160 10% 45%;
+
+    --accent: 160 60% 40%;
+    --accent-foreground: 150 40% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 160 84% 24%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 160 30% 10%;
+    --sidebar-foreground: 150 15% 85%;
+    --sidebar-primary: 160 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 16%;
+    --sidebar-accent-foreground: 150 15% 90%;
+    --sidebar-border: 160 20% 18%;
+    --sidebar-ring: 160 72% 45%;
+
+    --chart-1: 160 84% 24%;
+    --chart-2: 142 76% 36%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 0 72% 51%;
+    --chart-5: 200 80% 50%;
+  }
+
+  .dark {
+    --background: 160 30% 6%;
+    --foreground: 150 15% 90%;
+    --card: 160 25% 10%;
+    --card-foreground: 150 15% 90%;
+    --popover: 160 25% 10%;
+    --popover-foreground: 150 15% 90%;
+    --primary: 160 72% 45%;
+    --primary-foreground: 160 30% 6%;
+    --secondary: 160 20% 15%;
+    --secondary-foreground: 150 15% 90%;
+    --muted: 160 15% 15%;
+    --muted-foreground: 150 10% 55%;
+    --accent: 160 60% 40%;
+    --accent-foreground: 150 40% 98%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 160 72% 45%;
+    --sidebar-background: 160 30% 6%;
+    --sidebar-foreground: 150 15% 85%;
+    --sidebar-primary: 160 72% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 25% 12%;
+    --sidebar-accent-foreground: 150 15% 90%;
+    --sidebar-border: 160 20% 14%;
+    --sidebar-ring: 160 72% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 shadow-sm;
+  }
+  .stat-card {
+    @apply glass-card rounded-xl p-6 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5;
+  }
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent transition-all duration-200;
+  }
+  .sidebar-link-active {
+    @apply bg-sidebar-accent text-sidebar-primary font-medium;
+  }
+}
