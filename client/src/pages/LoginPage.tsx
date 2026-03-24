@@ -13,12 +13,15 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const { login, signup } = useAuth();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { login, signup, authError } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const success = isLogin ? login(email, password, role) : signup(name, email, password, role);
+    setIsSubmitting(true);
+    const success = isLogin ? await login(email, password, role) : await signup(name, email, password, role);
+    setIsSubmitting(false);
     if (success) navigate(role === "admin" ? "/admin" : "/citizen");
   };
 
@@ -96,8 +99,9 @@ export default function LoginPage() {
               <Label htmlFor="password">Password</Label>
               <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" required />
             </div>
-            <Button type="submit" className="w-full" size="lg">
-              {isLogin ? "Sign In" : "Create Account"}
+            {authError && <p className="text-sm text-destructive">{authError}</p>}
+            <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+              {isSubmitting ? "Please wait..." : isLogin ? "Sign In" : "Create Account"}
             </Button>
           </form>
 

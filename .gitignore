@@ -1,0 +1,39 @@
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build and cache output
+client/dist/
+server/dist/
+client/.vite/
+server/.turbo/
+coverage/
+
+# Runtime and temp files
+*.pid
+*.pid.lock
+*.seed
+*.tmp
+*.temp
+
+# Local backend data store
+server/src/data/db.json
